@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar | Instituto Animal Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/login.css">
+<script src="js/auth.js"></script>
+</head>
+<body>
+
+  <!-- Menu lateral -->
+  <aside class="sidebar" id="sidebar" aria-label="Menu principal">
+    <a href="inicio.html" class="brand" aria-label="Instituto Animal Life - início">
+      <span class="brand__logo"><img src="img/logo.png" alt="Logo do Instituto Animal Life"></span>
+      <span class="brand__text">Animal Life<small>Clínica Veterinária</small></span>
+    </a>
+
+    <div class="nav" role="navigation" aria-label="Navegação principal">
+      <a href="inicio.html"><span class="nav__ico" aria-hidden="true">🏠</span>Início</a>
+      <a href="sobre.html"><span class="nav__ico" aria-hidden="true">🐾</span>Sobre</a>
+      <a href="servicos.html"><span class="nav__ico" aria-hidden="true">🩺</span>Serviços</a>
+      <a href="agendamento.html"><span class="nav__ico" aria-hidden="true">📅</span>Agendar consulta</a>
+      <a href="blog.html"><span class="nav__ico" aria-hidden="true">📖</span>Blog e dicas</a>
+      <a href="contato.html"><span class="nav__ico" aria-hidden="true">📍</span>Contato</a>
+      <a href="animais.html"><span class="nav__ico" aria-hidden="true">🐶</span>Meus animais</a>
+    </div>
+
+    <a href="index.html" class="sidebar__login" id="linkLogin"><span aria-hidden="true">👤</span> Entrar</a>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+
+  <div class="content">
+    <!-- Barra de cima (so aparece no celular) -->
+    <header class="mobilebar">
+      <strong>Animal Life</strong>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero__text">
+          <p class="hero__hello">Área do tutor</p>
+          <h1>Entre na sua conta</h1>
+          <p class="hero__lead">Acesse para cadastrar seus animais e acompanhar a ficha de cada um, com raça, peso, vacinas e observações.</p>
+        </div>
+
+        <div class="block">
+          <h2 class="auth__title">Login</h2>
+          <form class="form" id="formLogin">
+            <div class="field">
+              <label for="loginUsuario">Login</label>
+              <input type="text" id="loginUsuario" autocomplete="username" required>
+            </div>
+            <div class="field">
+              <label for="loginSenha">Senha</label>
+              <input type="password" id="loginSenha" autocomplete="current-password" required>
+            </div>
+            <p class="msg" id="msgLogin" role="alert"></p>
+            <button type="submit" class="btn btn--primary btn--block">Entrar</button>
+            <p class="form__alt">Ainda não tem conta? <a class="link" href="cadastro.html">Cadastre-se</a></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Rodape -->
+    <footer class="footer">
+      <div class="footer__grid">
+        <div>
+          <h3>Instituto Animal Life</h3>
+          <p>Cuidando do seu melhor amigo com carinho.</p>
+        </div>
+        <div>
+          <h3>Área do tutor</h3>
+          <ul>
+            <li><a href="index.html">Entrar</a></li>
+            <li><a href="cadastro.html">Criar conta</a></li>
+            <li><a href="animais.html">Meus animais</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Seus dados</h3>
+          <p>As informações cadastradas ficam salvas apenas neste navegador.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">&copy; <span id="year"></span> Instituto Animal Life. Todos os direitos reservados.</div>
+    </footer>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

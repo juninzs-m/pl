@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro | Instituto Animal Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/login.css">
+<script src="js/auth.js"></script>
+</head>
+<body>
+
+  <!-- Menu lateral -->
+  <aside class="sidebar" id="sidebar" aria-label="Menu principal">
+    <a href="inicio.html" class="brand" aria-label="Instituto Animal Life - início">
+      <span class="brand__logo"><img src="img/logo.png" alt="Logo do Instituto Animal Life"></span>
+      <span class="brand__text">Animal Life<small>Clínica Veterinária</small></span>
+    </a>
+
+    <div class="nav" role="navigation" aria-label="Navegação principal">
+      <a href="inicio.html"><span class="nav__ico" aria-hidden="true">🏠</span>Início</a>
+      <a href="sobre.html"><span class="nav__ico" aria-hidden="true">🐾</span>Sobre</a>
+      <a href="servicos.html"><span class="nav__ico" aria-hidden="true">🩺</span>Serviços</a>
+      <a href="agendamento.html"><span class="nav__ico" aria-hidden="true">📅</span>Agendar consulta</a>
+      <a href="blog.html"><span class="nav__ico" aria-hidden="true">📖</span>Blog e dicas</a>
+      <a href="contato.html"><span class="nav__ico" aria-hidden="true">📍</span>Contato</a>
+      <a href="animais.html"><span class="nav__ico" aria-hidden="true">🐶</span>Meus animais</a>
+    </div>
+
+    <a href="index.html" class="sidebar__login" id="linkLogin"><span aria-hidden="true">👤</span> Entrar</a>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+
+  <div class="content">
+    <!-- Barra de cima (so aparece no celular) -->
+    <header class="mobilebar">
+      <strong>Animal Life</strong>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero__text">
+          <p class="hero__hello">Primeiro acesso</p>
+          <h1>Crie sua conta de tutor</h1>
+          <p class="hero__lead">Depois de criar a conta, você cadastra seu animal e já entra no site. Seus dados ficam salvos para preencher o agendamento automaticamente. e mantém a ficha de cada um sempre à mão.</p>
+        </div>
+
+        <div class="block">
+          <h2 class="auth__title">Cadastro de usuário</h2>
+          <form class="form" id="formCadastro">
+            <div class="field">
+              <label for="cadNome">Nome completo</label>
+              <input type="text" id="cadNome" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="cadTelefone">Telefone / WhatsApp</label>
+              <input type="tel" id="cadTelefone" autocomplete="tel" placeholder="(00) 00000-0000" required>
+            </div>
+            <div class="field">
+              <label for="cadEmail">E-mail</label>
+              <input type="email" id="cadEmail" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="cadEndereco">Endereço</label>
+              <input type="text" id="cadEndereco" autocomplete="street-address" required>
+            </div>
+            <div class="field">
+              <label for="cadLogin">Login</label>
+              <input type="text" id="cadLogin" autocomplete="username" required>
+            </div>
+            <div class="field">
+              <label for="cadSenha">Senha (mínimo 4 caracteres)</label>
+              <input type="password" id="cadSenha" autocomplete="new-password" required>
+            </div>
+            <div class="field">
+              <label for="cadConfirma">Confirme a senha</label>
+              <input type="password" id="cadConfirma" autocomplete="new-password" required>
+            </div>
+            <p class="msg" id="msgCadastro" role="alert"></p>
+            <button type="submit" class="btn btn--primary btn--block">Criar conta</button>
+            <p class="form__alt">Já tem conta? <a class="link" href="index.html">Entrar</a></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Rodape -->
+    <footer class="footer">
+      <div class="footer__grid">
+        <div>
+          <h3>Instituto Animal Life</h3>
+          <p>Cuidando do seu melhor amigo com carinho.</p>
+        </div>
+        <div>
+          <h3>Área do tutor</h3>
+          <ul>
+            <li><a href="index.html">Entrar</a></li>
+            <li><a href="cadastro.html">Criar conta</a></li>
+            <li><a href="animais.html">Meus animais</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Seus dados</h3>
+          <p>As informações cadastradas ficam salvas apenas neste navegador.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">&copy; <span id="year"></span> Instituto Animal Life. Todos os direitos reservados.</div>
+    </footer>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

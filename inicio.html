@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instituto Animal Life | Clínica Veterinária</title>
+  <meta name="description" content="Instituto Animal Life: consultas, vacinas, exames, cirurgias, castração, banho e tosa e atendimento de emergência.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+<script src="js/auth.js"></script>
+</head>
+<body>
+
+  <!-- BARRA LATERAL FIXA (como no mockup) -->
+  <aside class="sidebar" id="sidebar" aria-label="Menu principal">
+    <a href="inicio.html" class="brand" aria-label="Instituto Animal Life - início">
+      <span class="brand__logo"><img src="img/logo.png" alt="Logo do Instituto Animal Life"></span>
+      <span class="brand__text">Animal Life<small>Clínica Veterinária</small></span>
+    </a>
+
+    <div class="nav" role="navigation" aria-label="Navegação principal">
+      <a href="inicio.html" class="is-active"><span class="nav__ico" aria-hidden="true">🏠</span>Início</a>
+      <a href="sobre.html"><span class="nav__ico" aria-hidden="true">🐾</span>Sobre</a>
+      <a href="servicos.html"><span class="nav__ico" aria-hidden="true">🩺</span>Serviços</a>
+      <a href="agendamento.html"><span class="nav__ico" aria-hidden="true">📅</span>Agendar consulta</a>
+      <a href="blog.html"><span class="nav__ico" aria-hidden="true">📖</span>Blog e dicas</a>
+      <a href="contato.html"><span class="nav__ico" aria-hidden="true">📍</span>Contato</a>
+      <a href="animais.html"><span class="nav__ico" aria-hidden="true">🐶</span>Meus animais</a>
+    </div>
+
+    <a href="index.html" class="sidebar__login"><span aria-hidden="true">👤</span> Área do tutor</a>
+  </aside>
+
+  <!-- Barra superior (só aparece no celular) -->
+  <header class="mobilebar">
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">
+      <span></span><span></span><span></span>
+    </button>
+    <strong>Animal Life</strong>
+    <a href="agendamento.html" class="btn btn--small">Agendar</a>
+  </header>
+  <div class="overlay" id="overlay"></div>
+
+  <div class="content">
+    <main>
+      <!-- Aviso de emergência -->
+      <div class="emergency" role="note">
+        <span class="emergency__cross" aria-hidden="true">✚</span>
+        <p><strong>Emergência com seu pet?</strong> Atendimento de urgência todos os dias, inclusive feriados.</p>
+        <a href="tel:+5511987654321" class="btn btn--primary">Ligar (11) 98765-4321</a>
+      </div>
+
+      <!-- Apresentação da clínica -->
+      <section class="hero">
+        <div class="hero__text">
+          <p class="hero__hello">Bem-vindo(a) ao Instituto Animal Life</p>
+          <h1>Cuidando de quem te faz feliz!</h1>
+          <p class="hero__lead">Somos uma clínica veterinária para cães e gatos, com equipe atenciosa, estrutura moderna e atendimento de emergência. Cuidamos da saúde do seu pet em todas as fases da vida.</p>
+          <div class="hero__actions">
+            <a href="agendamento.html" class="btn btn--primary btn--lg">Agendar consulta</a>
+            <a href="#servicos" class="btn btn--ghost btn--lg">Ver serviços</a>
+          </div>
+        </div>
+
+        <div class="hero__media">
+          <!-- Coloque a foto em img/hero.jpg -->
+          <img src="img/hero.jpg" alt="Cachorro e gato juntos" onerror="this.parentElement.classList.add('no-img'); this.remove();">
+          <p class="hero__media-caption">Cuidando de quem te faz feliz!</p>
+        </div>
+      </section>
+
+      <!-- Resumo (cards como no mockup) -->
+      <section class="stats" aria-label="Resumo da clínica">
+        <div class="stat"><span class="stat__ico" aria-hidden="true">🕗</span><div><strong>8h às 20h</strong><small>Segunda a sábado</small></div></div>
+        <div class="stat"><span class="stat__ico" aria-hidden="true">🚨</span><div><strong>Emergência</strong><small>Todos os dias</small></div></div>
+        <div class="stat"><span class="stat__ico" aria-hidden="true">🐶</span><div><strong>Cães e gatos</strong><small>De todas as idades</small></div></div>
+      </section>
+
+      <!-- Principais serviços -->
+      <section class="block" id="servicos">
+        <header class="block__head">
+          <h2>Principais serviços</h2>
+          <a href="servicos.html" class="link">Ver todos</a>
+        </header>
+
+        <div class="cards" id="listaServicos">
+          <a class="card" href="agendamento.html"><span class="card__icon" aria-hidden="true">🩺</span><h3>Consultas</h3><p>Avaliação completa com nossos veterinários.</p></a>
+          <a class="card" href="agendamento.html"><span class="card__icon" aria-hidden="true">💉</span><h3>Vacinação</h3><p>Calendário de vacinas para filhotes, adultos e idosos.</p></a>
+          <a class="card" href="agendamento.html"><span class="card__icon" aria-hidden="true">🔬</span><h3>Exames</h3><p>Exames laboratoriais e de imagem.</p></a>
+          <a class="card" href="agendamento.html"><span class="card__icon" aria-hidden="true">🏥</span><h3>Cirurgias</h3><p>Centro cirúrgico e acompanhamento no pós-operatório.</p></a>
+          <a class="card" href="agendamento.html"><span class="card__icon" aria-hidden="true">✂️</span><h3>Castração</h3><p>Procedimento seguro, com orientação antes e depois.</p></a>
+          <a class="card" href="agendamento.html"><span class="card__icon" aria-hidden="true">🛁</span><h3>Banho e tosa</h3><p>Higiene e bem-estar para o seu pet.</p></a>
+        </div>
+      </section>
+
+      <!-- Depoimentos -->
+      <section class="block" id="depoimentos">
+        <header class="block__head"><h2>Depoimentos de clientes</h2></header>
+        <div class="testimonials" id="listaDepoimentos">
+          <figure class="testimonial">
+            <blockquote>A equipe foi atenciosa do começo ao fim. A Luna fez a cirurgia e eu recebia notícias a cada etapa.</blockquote>
+            <figcaption><span class="avatar">AC</span><span><strong>Ana Costa</strong><small>Tutora da Luna</small></span></figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>Cheguei de madrugada com o Bob passando mal e fomos atendidos na hora. Muito agradecido.</blockquote>
+            <figcaption><span class="avatar">RA</span><span><strong>Roberto Alves</strong><small>Tutor do Bob</small></span></figcaption>
+          </figure>
+          <figure class="testimonial">
+            <blockquote>Marcar consulta é simples e a Nala nem estressa mais. Os veterinários têm paciência com gatos.</blockquote>
+            <figcaption><span class="avatar">FL</span><span><strong>Fernanda Lima</strong><small>Tutora da Nala</small></span></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Chamada para agendamento -->
+      <section class="cta">
+        <div>
+          <h2>Seu pet merece um cuidado de verdade.</h2>
+          <p>Escolha o serviço, o dia e o horário e agende em poucos cliques.</p>
+        </div>
+        <a href="agendamento.html" class="btn btn--light btn--lg">Agendar consulta</a>
+      </section>
+    </main>
+  </div>
+
+  <!-- Botão do WhatsApp -->
+  <a class="whatsapp" href="https://wa.me/5511987654321?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta."
+     target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2zm0 18.200a8.200 8.200 0 0 1-4.200-1.200l-.3-.2-3 .8.8-2.900-.2-.3A8.200 8.200 0 1 1 12 20.200zm4.500-6.100c-.2-.1-1.500-.7-1.700-.8-.2-.1-.4-.1-.6.100l-.8 1c-.1.200-.3.200-.5.100a6.700 6.700 0 0 1-3.300-2.900c-.2-.4.200-.4.700-1.300.1-.2 0-.3 0-.5l-.8-1.800c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.100-.7.300-.2.300-.9.900-.9 2.200s.9 2.500 1 2.700c.1.200 1.800 2.800 4.400 3.900 1.600.7 2.300.8 3.100.7.500-.1 1.500-.6 1.700-1.200.2-.6.200-1.100.2-1.200-.1-.2-.2-.2-.5-.4z"/></svg>
+  </a>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prévia - Blog e Dicas de Cuidados</title>
+<style>/* FOLHA DE ESTILOS BLOG */
+
+/* Variáveis de cor: mude aqui e a página inteira muda */
+:root {
+  --vermelho: #c8102e;
+  --vermelho-escuro: #9b0c23;
+  --branco: #ffffff;
+  --fundo: #fdf2f3;
+  --borda: #f0c9ce;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* o tamanho da caixa inclui borda e espaçamento */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--fundo);
+  color: #2a1a1c;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  margin-bottom: 10px;
+  color: var(--vermelho);
+}
+
+header p {
+  color: #6b5256;
+}
+
+/* Botões de categoria */
+.filtros {
+  display: flex;           /* coloca os botões lado a lado */
+  flex-wrap: wrap;         /* se faltar espaço, desce para a linha de baixo */
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.filtros button {
+  padding: 8px 16px;
+  border: 2px solid var(--vermelho);
+  background: var(--branco);
+  color: var(--vermelho);
+  border-radius: 20px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Botão da categoria selecionada */
+.filtros button.ativo {
+  background: var(--vermelho);
+  color: var(--branco);
+}
+
+/* Grade de artigos: cria o máximo de colunas que couberem */
+.lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.artigo {
+  background: var(--branco);
+  border-top: 6px solid var(--vermelho);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.artigo:hover {
+  transform: scale(1.02);  /* aumenta 2% ao passar o mouse */
+}
+
+.artigo .categoria {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--vermelho);
+}
+
+.artigo h2 {
+  margin: 6px 0 8px;
+  font-size: 20px;
+}
+
+.artigo .meta {
+  font-size: 13px;
+  color: #6b5256;
+  margin-bottom: 10px;
+}
+
+.artigo summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--vermelho-escuro);
+}
+
+.artigo details p {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.aviso {
+  background: var(--branco);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+}
+</style><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/menu.css">
+<script src="js/auth.js"></script>
+</head><body class="has-sidebar">
+  <aside class="sidebar" id="sidebar" aria-label="Menu principal">
+    <a href="inicio.html" class="brand" aria-label="Instituto Animal Life - início">
+      <span class="brand__logo"><img src="img/logo.png" alt="Logo do Instituto Animal Life"></span>
+      <span class="brand__text">Animal Life<small>Clínica Veterinária</small></span>
+    </a>
+
+    <div class="nav" role="navigation" aria-label="Navegação principal">
+      <a href="inicio.html"><span class="nav__ico" aria-hidden="true">🏠</span>Início</a>
+      <a href="sobre.html"><span class="nav__ico" aria-hidden="true">🐾</span>Sobre</a>
+      <a href="servicos.html"><span class="nav__ico" aria-hidden="true">🩺</span>Serviços</a>
+      <a href="agendamento.html"><span class="nav__ico" aria-hidden="true">📅</span>Agendar consulta</a>
+      <a href="blog.html" class="is-active"><span class="nav__ico" aria-hidden="true">📖</span>Blog e dicas</a>
+      <a href="contato.html"><span class="nav__ico" aria-hidden="true">📍</span>Contato</a>
+      <a href="animais.html"><span class="nav__ico" aria-hidden="true">🐶</span>Meus animais</a>
+    </div>
+
+    <a href="index.html" class="sidebar__login"><span aria-hidden="true">👤</span> Área do tutor</a>
+  </aside>
+  <div class="mobilebar">
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">
+      <span></span><span></span><span></span>
+    </button>
+    <strong>Animal Life</strong>
+    <a href="agendamento.html" class="btn btn--small">Agendar</a>
+  </div>
+  <div class="overlay" id="overlay"></div>
+  <div class="content">
+<header style="padding-top:24px"><h1>Blog e Dicas de Cuidados</h1>
+<p>Artigos curtos e úteis para tutores: vacinas, alimentação, prevenção de doenças e comportamento animal.</p></header>
+<main><nav class="filtros" id="filtros" aria-label="Categorias"></nav><section class="lista" id="lista"></section></main>
+<script>/* SCRIPT BLOG */
+
+// Lista de categorias (devem ser iguais às do arquivo posts.json)
+const categorias = ["Todos", "Vacinas", "Alimentação", "Prevenção de doenças", "Comportamento"];
+
+let posts = [];             // aqui ficam os artigos lidos do JSON
+let filtroAtual = "Todos";  // categoria selecionada no momento
+
+// Função ajudante: cria um elemento HTML (ex: <h2>) com texto e classe
+function criar(tag, texto, classe) {
+  const el = document.createElement(tag);
+  if (texto) el.textContent = texto;   // textContent coloca o texto de forma segura
+  if (classe) el.className = classe;
+  return el;
+}
+
+// Desenha os botões de categoria
+function mostrarFiltros() {
+  const nav = document.getElementById("filtros");
+  nav.innerHTML = "";
+  categorias.forEach((cat) => {
+    const botao = criar("button", cat, cat === filtroAtual ? "ativo" : "");
+    botao.type = "button";
+    // Ao clicar: troca o filtro e desenha tudo de novo
+    botao.addEventListener("click", () => {
+      filtroAtual = cat;
+      mostrarFiltros();
+      mostrarPosts();
+    });
+    nav.appendChild(botao);
+  });
+}
+
+// Desenha os artigos da categoria escolhida
+function mostrarPosts() {
+  const lista = document.getElementById("lista");
+  lista.innerHTML = "";
+
+  // filter: mantém só os artigos da categoria escolhida
+  const visiveis = posts.filter((p) => filtroAtual === "Todos" || p.categoria === filtroAtual);
+
+  if (visiveis.length === 0) {
+    lista.appendChild(criar("p", "Ainda não há artigos nesta categoria.", "aviso"));
+    return;
+  }
+
+  // slice().reverse(): deixa o artigo mais novo primeiro
+  visiveis.slice().reverse().forEach((p) => {
+    const artigo = criar("article", "", "artigo");
+    artigo.appendChild(criar("span", p.categoria, "categoria"));
+    artigo.appendChild(criar("h2", p.titulo));
+    artigo.appendChild(criar("p", p.autor + " - " + p.data, "meta"));
+
+    // details/summary: caixinha que abre e fecha ao clicar
+    const detalhes = criar("details");
+    detalhes.appendChild(criar("summary", "Ler artigo"));
+    detalhes.appendChild(criar("p", p.texto));
+    artigo.appendChild(detalhes);
+
+    lista.appendChild(artigo);
+  });
+}
+
+// Lê o arquivo posts.json e desenha a página
+async function carregarPosts() {
+  try {
+    // "?ts=" evita que o navegador mostre uma versão antiga do arquivo
+    const resposta = {ok:true, json: async()=>[
+  {
+    "id": 1,
+    "categoria": "Vacinas",
+    "titulo": "Quando vacinar meu filhote?",
+    "autor": "Equipe veterinária",
+    "data": "10/11/2026",
+    "texto": "A primeira vacina costuma ser aplicada nas primeiras semanas de vida, e depois são necessários reforços até o filhote completar o esquema. Leve seu filhote a uma consulta o quanto antes: o veterinário define o calendário ideal para ele e já faz o exame geral."
+  },
+  {
+    "id": 2,
+    "categoria": "Alimentação",
+    "titulo": "Ração, petisco e comida de casa: o que pode?",
+    "autor": "Equipe veterinária",
+    "data": "10/11/2026",
+    "texto": "A base da alimentação deve ser uma ração adequada à idade e ao porte do animal. Petiscos entram em pequenas quantidades. Chocolate, uva, cebola e alho são perigosos para cães e gatos e nunca devem ser oferecidos."
+  },
+  {
+    "id": 3,
+    "categoria": "Prevenção de doenças",
+    "titulo": "Vermífugo e antipulgas: por que manter em dia?",
+    "autor": "Equipe veterinária",
+    "data": "10/11/2026",
+    "texto": "Vermes, pulgas e carrapatos causam desconforto e podem transmitir doenças. Mantenha vermífugo e antiparasitários em dia, conforme a orientação do veterinário, e faça check-ups regulares."
+  },
+  {
+    "id": 4,
+    "categoria": "Comportamento",
+    "titulo": "Meu cachorro late quando fico sozinho. E agora?",
+    "autor": "Equipe veterinária",
+    "data": "10/11/2026",
+    "texto": "Latidos na ausência do tutor podem indicar ansiedade ou tédio. Passeios, brinquedos e uma rotina previsível ajudam. Se o problema continuar, agende uma consulta para avaliar o comportamento."
+  }
+]
+};
+    if (!resposta.ok) {
+      throw new Error("Erro HTTP: " + resposta.status);
+    }
+    posts = await resposta.json();
+    mostrarFiltros();
+    mostrarPosts();
+  } catch (erro) {
+    console.error("Erro ao carregar posts.json:", erro);
+    document.getElementById("lista").appendChild(
+      criar("p", "Não foi possível carregar os artigos.", "aviso")
+    );
+  }
+}
+
+carregarPosts();
+</script></div>
+<script src="js/menu.js"></script>
+</body></html>

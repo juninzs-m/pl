@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Instituto Animal Life | Agendamento</title>
+
+    <link rel="stylesheet" href="css/agendamento.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/menu.css">
+<script src="js/auth.js"></script>
+</head>
+
+<body class="has-sidebar">
+  <aside class="sidebar" id="sidebar" aria-label="Menu principal">
+    <a href="inicio.html" class="brand" aria-label="Instituto Animal Life - início">
+      <span class="brand__logo"><img src="img/logo.png" alt="Logo do Instituto Animal Life"></span>
+      <span class="brand__text">Animal Life<small>Clínica Veterinária</small></span>
+    </a>
+
+    <div class="nav" role="navigation" aria-label="Navegação principal">
+      <a href="inicio.html"><span class="nav__ico" aria-hidden="true">🏠</span>Início</a>
+      <a href="sobre.html"><span class="nav__ico" aria-hidden="true">🐾</span>Sobre</a>
+      <a href="servicos.html"><span class="nav__ico" aria-hidden="true">🩺</span>Serviços</a>
+      <a href="agendamento.html" class="is-active"><span class="nav__ico" aria-hidden="true">📅</span>Agendar consulta</a>
+      <a href="blog.html"><span class="nav__ico" aria-hidden="true">📖</span>Blog e dicas</a>
+      <a href="contato.html"><span class="nav__ico" aria-hidden="true">📍</span>Contato</a>
+      <a href="animais.html"><span class="nav__ico" aria-hidden="true">🐶</span>Meus animais</a>
+    </div>
+
+    <a href="index.html" class="sidebar__login"><span aria-hidden="true">👤</span> Área do tutor</a>
+  </aside>
+  <div class="mobilebar">
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">
+      <span></span><span></span><span></span>
+    </button>
+    <strong>Animal Life</strong>
+    <a href="agendamento.html" class="btn btn--small">Agendar</a>
+  </div>
+  <div class="overlay" id="overlay"></div>
+  <div class="content">
+
+    <!-- CABEÇALHO -->
+
+    <header class="header">
+
+        <div class="logo">
+
+            <img
+                src="img/logo.jpg"
+                alt="Logo da Clínica Veterinária"
+                class="logo-img">
+
+            <div class="logo-text">
+
+                <h1>Instituto Animal Life</h1>
+
+                <p>
+                    Cuidando de quem faz parte da sua família.
+                </p>
+
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+
+    <main class="container">
+
+        <div class="titulo">
+
+            <h2>Agende uma consulta</h2>
+
+            <p>
+                Preencha os dados abaixo para agendar um atendimento.
+            </p>
+
+        </div>
+
+
+        <form id="formAgendamento">
+
+
+            <!-- 01. DADOS DO TUTOR -->
+
+            <section class="form-section">
+
+                <h3>01. Dados do tutor</h3>
+
+                <div class="form-group">
+
+                    <label for="nome_tutor">
+                        Nome completo *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome_tutor"
+                        name="nome_tutor"
+                        placeholder="Digite seu nome completo"
+                        required>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="telefone">
+                            Telefone / WhatsApp *
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefone"
+                            name="telefone"
+                            placeholder="(00) 00000-0000"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="seuemail@email.com">
+
+                    </div>
+
+                </div>
+
+
+                <!-- NOVO CAMPO: ENDEREÇO -->
+
+                <div class="form-group">
+
+                    <label for="endereco">
+                        Endereço *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="endereco"
+                        name="endereco"
+                        placeholder="Digite seu endereço completo"
+                        required>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- 02. INFORMAÇÕES DO ANIMAL -->
+
+            <section class="form-section">
+
+                <h3>02. Informações do animal</h3>
+
+                <div class="form-group" id="grupoAnimalSalvo" hidden>
+                    <label for="animal_salvo">Animal cadastrado</label>
+                    <select id="animal_salvo"></select>
+                </div>
+
+                <div class="form-group">
+
+                    <label for="nome_animal">
+                        Nome do animal *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome_animal"
+                        name="nome_animal"
+                        placeholder="Nome do seu pet"
+                        required>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="especie">
+                            Espécie *
+                        </label>
+
+                        <select
+                            id="especie"
+                            name="especie"
+                            required>
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="Cachorro">
+                                Cachorro
+                            </option>
+
+                            <option value="Gato">
+                                Gato
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="raca">
+                            Raça
+                        </label>
+
+                        <input
+                            type="text"
+                            id="raca"
+                            name="raca"
+                            placeholder="Ex: Labrador">
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="nascimento">
+                            Data de nascimento
+                        </label>
+
+                        <input
+                            type="date"
+                            id="nascimento"
+                            name="nascimento">
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="sexo">
+                            Sexo
+                        </label>
+
+                        <select
+                            id="sexo"
+                            name="sexo">
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="Macho">
+                                Macho
+                            </option>
+
+                            <option value="Fêmea">
+                                Fêmea
+                            </option>
+
+                            <option value="Não informado">
+                                Não informado
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- 03. DADOS DO AGENDAMENTO -->
+
+            <section class="form-section">
+
+                <h3>03. Dados do agendamento</h3>
+
+                <div class="form-group">
+
+                    <label for="servico">
+                        Tipo de atendimento *
+                    </label>
+
+                    <select
+                        id="servico"
+                        name="servico"
+                        required>
+
+                        <option value="">
+                            Selecione o atendimento
+                        </option>
+
+                        <option value="Consulta">
+                            Consulta veterinária
+                        </option>
+
+                        <option value="Vacinacao">
+                            Vacinação
+                        </option>
+
+                        <option value="Retorno">
+                            Retorno
+                        </option>
+
+                        <option value="Exames">
+                            Exames
+                        </option>
+
+                        <option value="Castracao">
+                            Castração
+                        </option>
+
+                        <option value="Outro">
+                            Outros procedimentos
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="veterinario">
+                        Veterinário
+                    </label>
+
+                    <select
+                        id="veterinario"
+                        name="veterinario">
+
+                        <option value="">
+                            Sem preferência
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="data">
+                            Data da consulta *
+                        </label>
+
+                        <input
+                            type="date"
+                            id="data"
+                            name="data"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="horario">
+                            Horário *
+                        </label>
+
+                        <select
+                            id="horario"
+                            name="horario"
+                            required>
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- 04. INFORMAÇÕES ADICIONAIS -->
+
+            <section class="form-section">
+
+                <h3>04. Informações adicionais</h3>
+
+                <div class="form-group">
+
+                    <label for="observacoes">
+                        Motivo da consulta / Observações
+                    </label>
+
+                    <textarea
+                        id="observacoes"
+                        name="observacoes"
+                        rows="5"
+                        placeholder="Descreva os sintomas ou informações importantes sobre o animal..."></textarea>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- BOTÃO DE CONFIRMAÇÃO -->
+
+            <p class="aviso">
+                * Campos obrigatórios.
+            </p>
+
+            <button type="submit">
+                Confirmar agendamento
+            </button>
+
+
+        </form>
+
+        <section class="form-section" id="meusAgendamentos" hidden>
+            <h3>Meus agendamentos</h3>
+            <ul id="listaAgendamentos"></ul>
+        </section>
+
+    </main>
+
+
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        <p>
+            Instituto Animal Life - Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+
+</div>
+<script src="js/menu.js"></script>
+<script src="js/agendamento.js"></script>
+</body>
+</html>

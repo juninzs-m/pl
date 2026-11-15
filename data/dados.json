@@ -1,0 +1,15 @@
+{
+  "servicos": [
+    {"icone": "🩺", "titulo": "Consultas", "descricao": "Avaliação completa com nossos veterinários."},
+    {"icone": "💉", "titulo": "Vacinação", "descricao": "Calendário de vacinas para filhotes, adultos e idosos."},
+    {"icone": "🔬", "titulo": "Exames", "descricao": "Exames laboratoriais e de imagem."},
+    {"icone": "🏥", "titulo": "Cirurgias", "descricao": "Centro cirúrgico e acompanhamento no pós-operatório."},
+    {"icone": "✂️", "titulo": "Castração", "descricao": "Procedimento seguro, com orientação antes e depois."},
+    {"icone": "🛁", "titulo": "Banho e tosa", "descricao": "Higiene e bem-estar para o seu pet."}
+  ],
+  "depoimentos": [
+    {"iniciais": "AC", "nome": "Ana Costa", "pet": "Tutora da Luna", "texto": "A equipe foi atenciosa do começo ao fim. A Luna fez a cirurgia e eu recebia notícias a cada etapa."},
+    {"iniciais": "RA", "nome": "Roberto Alves", "pet": "Tutor do Bob", "texto": "Cheguei de madrugada com o Bob passando mal e fomos atendidos na hora. Muito agradecido."},
+    {"iniciais": "FL", "nome": "Fernanda Lima", "pet": "Tutora da Nala", "texto": "Marcar consulta é simples e a Nala nem estressa mais. Os veterinários têm paciência com gatos."}
+  ]
+}

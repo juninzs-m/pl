@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meus animais | Instituto Animal Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/login.css">
+<script src="js/auth.js"></script>
+</head>
+<body>
+
+  <!-- Menu lateral -->
+  <aside class="sidebar" id="sidebar" aria-label="Menu principal">
+    <a href="inicio.html" class="brand" aria-label="Instituto Animal Life - início">
+      <span class="brand__logo"><img src="img/logo.png" alt="Logo do Instituto Animal Life"></span>
+      <span class="brand__text">Animal Life<small>Clínica Veterinária</small></span>
+    </a>
+
+    <div class="nav" role="navigation" aria-label="Navegação principal">
+      <a href="inicio.html"><span class="nav__ico" aria-hidden="true">🏠</span>Início</a>
+      <a href="sobre.html"><span class="nav__ico" aria-hidden="true">🐾</span>Sobre</a>
+      <a href="servicos.html"><span class="nav__ico" aria-hidden="true">🩺</span>Serviços</a>
+      <a href="agendamento.html"><span class="nav__ico" aria-hidden="true">📅</span>Agendar consulta</a>
+      <a href="blog.html"><span class="nav__ico" aria-hidden="true">📖</span>Blog e dicas</a>
+      <a href="contato.html"><span class="nav__ico" aria-hidden="true">📍</span>Contato</a>
+      <a href="animais.html" class="is-active"><span class="nav__ico" aria-hidden="true">🐶</span>Meus animais</a>
+    </div>
+
+    <a href="index.html" class="sidebar__login" id="linkLogin"><span aria-hidden="true">👤</span> Entrar</a>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+
+  <div class="content">
+    <!-- Barra de cima (so aparece no celular) -->
+    <header class="mobilebar">
+      <strong>Animal Life</strong>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <main>
+      <!-- Aviso: aparece se ninguem fez login -->
+      <div class="emergency" id="avisoLogin" hidden>
+        <span class="emergency__cross" aria-hidden="true">!</span>
+        <p>Você precisa entrar na sua conta para ver e cadastrar seus animais.</p>
+        <a class="btn btn--primary" href="index.html">Entrar</a>
+      </div>
+
+      <!-- Area do tutor: aparece depois do login -->
+      <div id="areaAnimais" class="area" hidden>
+        <section class="block" id="primeiroAcesso" hidden>
+          <div class="block__head"><h2>Conta criada! 🎉</h2></div>
+          <p>Agora cadastre seu animal. Depois é só continuar para o início do site.</p>
+        </section>
+
+        <section class="block">
+          <div class="block__head">
+            <h2 id="boasVindas">Olá!</h2>
+          </div>
+          <p>Cadastre um novo animal preenchendo a ficha abaixo.</p>
+        </section>
+
+        <section class="block">
+          <div class="block__head">
+            <h2>Cadastrar animal</h2>
+          </div>
+          <form class="form" id="formAnimal">
+            <div class="form-grid">
+              <div class="field field--full">
+                <label for="animalNome">Nome do animal</label>
+                <input type="text" id="animalNome" required>
+              </div>
+              <div class="field field--full">
+                <label for="animalEspecie">Espécie</label>
+                <select id="animalEspecie" required>
+                  <option value="Cachorro">Cachorro</option>
+                  <option value="Gato">Gato</option>
+                </select>
+              </div>
+              <div class="field field--full">
+                <label for="animalRaca">Raça</label>
+                <select id="animalRaca"></select>
+              </div>
+              <div class="field">
+                <label for="animalIdade">Idade (anos)</label>
+                <input type="number" id="animalIdade" min="0" max="40" required>
+              </div>
+              <div class="field">
+                <label for="animalPeso">Peso (kg)</label>
+                <input type="number" id="animalPeso" min="0" step="0.1" required>
+              </div>
+              <div class="field">
+                <label for="animalSexo">Sexo</label>
+                <select id="animalSexo">
+                  <option value="Macho">Macho</option>
+                  <option value="Fêmea">Fêmea</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="animalVacina">Vacinas em dia?</label>
+                <select id="animalVacina">
+                  <option value="Sim">Sim</option>
+                  <option value="Não">Não</option>
+                </select>
+              </div>
+              <div class="field field--full">
+                <label for="animalObs">Observações (alergias, doenças...)</label>
+                <textarea id="animalObs" rows="3"></textarea>
+              </div>
+            </div>
+            <p class="msg" id="msgAnimal" role="status"></p>
+            <button type="submit" class="btn btn--primary">Cadastrar animal</button>
+            <a href="inicio.html" class="btn btn--ghost" id="continuar" hidden>Continuar para o início →</a>
+          </form>
+        </section>
+
+        <section class="block">
+          <div class="block__head">
+            <h2>Meus animais</h2>
+          </div>
+          <div class="cards" id="listaAnimais"></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Rodape -->
+    <footer class="footer">
+      <div class="footer__grid">
+        <div>
+          <h3>Instituto Animal Life</h3>
+          <p>Cuidando do seu melhor amigo com carinho.</p>
+        </div>
+        <div>
+          <h3>Área do tutor</h3>
+          <ul>
+            <li><a href="index.html">Entrar</a></li>
+            <li><a href="cadastro.html">Criar conta</a></li>
+            <li><a href="animais.html">Meus animais</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Seus dados</h3>
+          <p>As informações cadastradas ficam salvas apenas neste navegador.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">&copy; <span id="year"></span> Instituto Animal Life. Todos os direitos reservados.</div>
+    </footer>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

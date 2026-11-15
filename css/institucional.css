@@ -1,0 +1,174 @@
+:root {
+  --vermelho: #c80000;
+  --vermelho-escuro: #a30000;
+  --vermelho-claro: #fdecec;
+  --texto: #222;
+  --texto-suave: #555;
+  --borda: #e3e3e3;
+  --fundo: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  color: var(--texto);
+  background: var(--fundo);
+  line-height: 1.5;
+}
+
+/* ---------- Cabeçalho ---------- */
+header {
+  background: var(--vermelho);
+  color: #fff;
+  padding: 8px 48px;
+}
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.marca { display: flex; align-items: center; gap: 20px; }
+.logo {
+  width: 110px; height: 100px;
+  background: #fff;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 52px;
+}
+.marca h1 { font-size: 2rem; line-height: 1.1; }
+.marca p { font-size: 0.95rem; opacity: .95; margin-top: 4px; }
+
+nav { display: flex; gap: 8px; flex-wrap: wrap; }
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background .2s;
+}
+nav a:hover, nav a.ativo { background: rgba(255,255,255,.18); }
+
+/* ---------- Conteúdo ---------- */
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 48px 60px;
+}
+
+.titulo-pagina { text-align: center; margin-bottom: 36px; }
+.titulo-pagina h2 { color: var(--vermelho); font-size: 2.1rem; }
+.titulo-pagina p { color: var(--texto-suave); margin-top: 8px; }
+
+section { margin-bottom: 48px; }
+
+.secao-titulo {
+  color: var(--vermelho);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 24px;
+  transition: box-shadow .2s, transform .2s, border-color .2s;
+}
+.card:hover {
+  box-shadow: 0 6px 18px rgba(200, 0, 0, .12);
+  border-color: #f0b4b4;
+  transform: translateY(-3px);
+}
+
+/* Serviços */
+.servico .icone {
+  width: 56px; height: 56px;
+  background: var(--vermelho-claro);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+.servico h3 { color: var(--vermelho); margin-bottom: 6px; font-size: 1.1rem; }
+.servico p { color: var(--texto-suave); font-size: .95rem; }
+
+/* Equipe */
+.membro { text-align: center; }
+.avatar {
+  width: 92px; height: 92px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: var(--vermelho);
+  color: #fff;
+  font-size: 1.9rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  border: 4px solid var(--vermelho-claro);
+}
+.membro h3 { font-size: 1.1rem; }
+.cargo {
+  display: inline-block;
+  margin: 6px 0 10px;
+  padding: 3px 12px;
+  background: var(--vermelho-claro);
+  color: var(--vermelho);
+  border-radius: 999px;
+  font-size: .8rem;
+  font-weight: 700;
+}
+.membro p { color: var(--texto-suave); font-size: .93rem; }
+
+.membro.lider { border: 2px solid var(--vermelho); }
+.membro.lider .cargo { background: var(--vermelho); color: #fff; }
+
+/* ---------- Rodapé ---------- */
+footer {
+  background: var(--vermelho-escuro);
+  color: #fff;
+  text-align: center;
+  padding: 22px 16px;
+  font-size: .9rem;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1000px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  header { padding: 12px 20px; }
+  main { padding: 28px 20px 48px; }
+  .grid { grid-template-columns: 1fr; }
+  .logo { width: 72px; height: 68px; font-size: 36px; }
+  .marca h1 { font-size: 1.4rem; }
+}
+
+.lg{
+  width: 95px;
+  height: 95px;
+}
+
+/* ---------- Páginas Sobre e Serviços ---------- */
+.texto-sobre { max-width: 860px; margin-left: auto; margin-right: auto; }
+.texto-sobre p { color: var(--texto-suave); font-size: 1.02rem; line-height: 1.75; margin-bottom: 14px; }
+.chamada { text-align: center; margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.botao {
+  display: inline-block; padding: 12px 26px; border-radius: 10px;
+  background: var(--vermelho); color: #fff; font-weight: 700; text-decoration: none;
+  border: 2px solid var(--vermelho);
+}
+.botao:hover { background: var(--vermelho-escuro); border-color: var(--vermelho-escuro); }
+.botao--claro { background: #fff; color: var(--vermelho); }
+.botao--claro:hover { background: var(--vermelho-claro); color: var(--vermelho-escuro); }
